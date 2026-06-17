@@ -25,7 +25,7 @@ export default function Students() {
 
   return (
     <div className="container py-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex flex-column flex-sm-row justify-content-between  align-items-start align-items-sm-center mb-4 gap-3">
         <div>
           <h1 className="fw-bold">Alumnos</h1>
 
@@ -92,6 +92,7 @@ export default function Students() {
                     <td>{alumno.tutor}</td>
 
                     <td>
+                      <div className="d-flex">
                       <button
                         className="btn btn-sm btn-outline-primary me-2"
                         title="Ver"
@@ -112,6 +113,7 @@ export default function Students() {
                       >
                         <i className="bi bi-trash"></i>
                       </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

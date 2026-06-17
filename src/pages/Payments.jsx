@@ -44,7 +44,7 @@ export default function Payments() {
 
   return (
     <div className="container py-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 gap-3">
         <div>
           <h1 className="fw-bold">Pagos</h1>
 
@@ -112,19 +112,21 @@ export default function Payments() {
                     <td>{getBadge(pago.estado)}</td>
 
                     <td>
-                      <button
-                        className="btn btn-sm btn-success me-2"
-                        title="Registrar Pago"
-                      >
-                        <i className="bi bi-cash"></i>
-                      </button>
+                      <div className="d-flex">
+                        <button
+                          className="btn btn-sm btn-success me-2"
+                          title="Registrar Pago"
+                        >
+                          <i className="bi bi-cash"></i>
+                        </button>
 
-                      <button
-                        className="btn btn-sm btn-outline-primary"
-                        title="Ver Historial"
-                      >
-                        <i className="bi bi-eye"></i>
-                      </button>
+                        <button
+                          className="btn btn-sm btn-outline-primary"
+                          title="Ver Historial"
+                        >
+                          <i className="bi bi-eye"></i>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

@@ -10,11 +10,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === "admin" && password === "admin") {
-      navigate("/home");
-    } else {
-      alert("Credenciales incorrectas");
-    }
+    navigate("/home");
   };
 
   return (
@@ -42,9 +38,7 @@ export default function Login() {
             />
           </div>
 
-          <button className="btn btn-primary w-100">
-            Entrar
-          </button>
+          <button className="btn btn-primary w-100">Entrar</button>
         </form>
       </div>
     </div>
