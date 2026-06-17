@@ -10,7 +10,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (email === "admin" && password === "123456") {
+    if (email === "admin" && password === "admin") {
       navigate("/home");
     } else {
       alert("Credenciales incorrectas");
