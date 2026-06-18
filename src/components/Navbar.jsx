@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import { Collapse } from "bootstrap";
 
 export default function Navbar() {
+  const closeMenu = () => {
+    const menu = document.getElementById("navbarMenu");
+
+    if (menu && menu.classList.contains("show")) {
+      Collapse.getOrCreateInstance(menu).hide();
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-info shadow">
       <div className="container">
@@ -13,9 +22,6 @@ export default function Navbar() {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarMenu"
-          aria-controls="navbarMenu"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -23,32 +29,31 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarMenu">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/home">
+              <Link to="/home" className="nav-link" onClick={closeMenu}>
                 Inicio
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/academic">
+              <Link to="/academic" className="nav-link" onClick={closeMenu}>
                 Académico
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/students">
+              <Link to="/students" className="nav-link" onClick={closeMenu}>
                 Alumnos
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/payments">
+              <Link to="/payments" className="nav-link" onClick={closeMenu}>
                 Pagos
               </Link>
             </li>
 
-
             <li className="nav-item">
-              <Link className="nav-link" to="/reports">
+              <Link to="/reports" className="nav-link" onClick={closeMenu}>
                 Reportes
               </Link>
             </li>
