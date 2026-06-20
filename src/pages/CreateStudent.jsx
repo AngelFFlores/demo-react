@@ -138,7 +138,7 @@ export default function CreateStudent() {
             </div>
 
             <div className="d-flex gap-2">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary"  onClick={() => window.history.back()}>
                 Guardar
               </button>
 

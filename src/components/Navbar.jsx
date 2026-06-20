@@ -61,6 +61,12 @@ export default function Navbar() {
               </Link>
             </li>
 
+             <li className="nav-item">
+              <Link className="nav-link" to="/" onClick={closeMenu}>
+                Cerrar sesión
+              </Link>
+            </li>
+
           </ul>
         </div>
       </div>
