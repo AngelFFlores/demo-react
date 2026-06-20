@@ -4,11 +4,41 @@ import { useParams } from "react-router-dom";
 export default function Level() {
   const { id } = useParams();
 
+  const levelNames = {
+    1: "Gotitas",
+    2: "Rayitos",
+    3: "Exploradores",
+    4: "Avanzado",
+  };
+
+  const levelName = levelNames[id] || "Nivel";
+
+  const groups = [
+    {
+      icon: "☀️",
+      title: "Grupo Matutino",
+      description: "09:00 - 10:00",
+      route: "/group/1",
+    },
+    {
+      icon: "🌤️",
+      title: "Grupo Intermedio",
+      description: "11:00 - 12:00",
+      route: "/group/2",
+    },
+    {
+      icon: "🌙",
+      title: "Grupo Vespertino",
+      description: "16:00 - 17:00",
+      route: "/group/3",
+    },
+  ];
+
   return (
-    <div className="container py-5">
-      <div className="d-flex flex-column flex-sm-row justify-content-between  align-items-start align-items-sm-center mb-4 gap-3">
+    <div className="container py-5 px-3">
+      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 gap-3">
         <div>
-          <h1 className="fw-bold">Nivel {id}</h1>
+          <h1 className="fw-bold">{levelName}</h1>
 
           <p className="text-muted mb-0">
             Selecciona un grupo.
@@ -21,26 +51,15 @@ export default function Level() {
       </div>
 
       <div className="row">
-        <DashboardCard
-          icon="☀️"
-          title="Grupo Matutino"
-          description="09:00 - 10:00"
-          route="/group/1"
-        />
-
-        <DashboardCard
-          icon="🌤️"
-          title="Grupo Intermedio"
-          description="11:00 - 12:00"
-          route="/group/2"
-        />
-
-        <DashboardCard
-          icon="🌙"
-          title="Grupo Vespertino"
-          description="16:00 - 17:00"
-          route="/group/3"
-        />
+        {groups.map((group, index) => (
+          <DashboardCard
+            key={index}
+            icon={group.icon}
+            title={group.title}
+            description={group.description}
+            route={group.route}
+          />
+        ))}
       </div>
     </div>
   );

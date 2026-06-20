@@ -1,14 +1,17 @@
-import { Link } from "react-router-dom";
-import { Collapse } from "bootstrap";
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const closeMenu = () => {
-    const menu = document.getElementById("navbarMenu");
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
 
-    if (menu && menu.classList.contains("show")) {
-      Collapse.getOrCreateInstance(menu).hide();
-    }
-  };
+  const toggleMenu = () => setOpen(prev => !prev);
+  const closeMenu = () => setOpen(false);
+
+  // Cierra menú cuando cambia la ruta
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-info shadow">
@@ -20,43 +23,44 @@ export default function Navbar() {
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarMenu"
+          onClick={toggleMenu}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarMenu">
+        <div className={`collapse navbar-collapse ${open ? "show" : ""}`}>
           <ul className="navbar-nav ms-auto">
+
             <li className="nav-item">
-              <Link to="/home" className="nav-link" onClick={closeMenu}>
+              <Link className="nav-link" to="/home" onClick={closeMenu}>
                 Inicio
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link to="/academic" className="nav-link" onClick={closeMenu}>
+              <Link className="nav-link" to="/academic" onClick={closeMenu}>
                 Académico
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link to="/students" className="nav-link" onClick={closeMenu}>
+              <Link className="nav-link" to="/students" onClick={closeMenu}>
                 Alumnos
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link to="/payments" className="nav-link" onClick={closeMenu}>
+              <Link className="nav-link" to="/payments" onClick={closeMenu}>
                 Pagos
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link to="/reports" className="nav-link" onClick={closeMenu}>
+              <Link className="nav-link" to="/reports" onClick={closeMenu}>
                 Reportes
               </Link>
             </li>
+
           </ul>
         </div>
       </div>

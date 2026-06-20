@@ -1,44 +1,50 @@
 import DashboardCard from "../components/DashboardCard";
 
 export default function Academic() {
+  const levels = [
+    {
+      icon: "🫧",
+      title: "Gotitas",
+      description: "Estimulación inicial.",
+      route: "/level/1",
+    },
+    {
+      icon: "☀️",
+      title: "Rayitos",
+      description: "Desarrollo motriz.",
+      route: "/level/2",
+    },
+    {
+      icon: "🔎",
+      title: "Exploradores",
+      description: "Exploración guiada.",
+      route: "/level/3",
+    },
+    {
+      icon: "🚀",
+      title: "Avanzado",
+      description: "Autonomía y aprendizaje.",
+      route: "/level/4",
+    },
+  ];
+
   return (
-    <div className="container py-5">
+    <div className="container py-5 px-3">
       <div className="text-center mb-5">
         <h1 className="fw-bold">Académico</h1>
-
-        <p className="text-muted">
-          Selecciona un nivel.
-        </p>
+        <p className="text-muted">Selecciona un nivel.</p>
       </div>
 
       <div className="row">
-        <DashboardCard
-          icon="🍼"
-          title="Nivel 1"
-          description="Estimulación inicial."
-          route="/level/1"
-        />
-
-        <DashboardCard
-          icon="👶"
-          title="Nivel 2"
-          description="Desarrollo motriz."
-          route="/level/2"
-        />
-
-        <DashboardCard
-          icon="🚼"
-          title="Nivel 3"
-          description="Exploración guiada."
-          route="/level/3"
-        />
-
-        <DashboardCard
-          icon="🎨"
-          title="Nivel 4"
-          description="Autonomía y aprendizaje."
-          route="/level/4"
-        />
+        {levels.map((level, index) => (
+          <DashboardCard
+            key={index}
+            icon={level.icon}
+            title={level.title}
+            description={level.description}
+            route={level.route}
+          />
+        ))}
       </div>
     </div>
   );

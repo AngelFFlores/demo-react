@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Students() {
+  const navigate = useNavigate();
   const alumnos = [
     {
       id: 1,
@@ -24,7 +27,7 @@ export default function Students() {
   ];
 
   return (
-    <div className="container py-5">
+    <div className="container py-5 px-3">
       <div className="d-flex flex-column flex-sm-row justify-content-between  align-items-start align-items-sm-center mb-4 gap-3">
         <div>
           <h1 className="fw-bold">Alumnos</h1>
@@ -34,7 +37,10 @@ export default function Students() {
           </p>
         </div>
 
-        <button className="btn btn-primary">
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/alumnos/nuevo")}
+        >
           + Nuevo Alumno
         </button>
       </div>
@@ -93,26 +99,26 @@ export default function Students() {
 
                     <td>
                       <div className="d-flex">
-                      <button
-                        className="btn btn-sm btn-outline-primary me-2"
-                        title="Ver"
-                      >
-                        <i className="bi bi-eye"></i>
-                      </button>
+                        <button
+                          className="btn btn-sm btn-outline-primary me-2"
+                          title="Ver"
+                        >
+                          <i className="bi bi-eye"></i>
+                        </button>
 
-                      <button
-                        className="btn btn-sm btn-outline-secondary me-2"
-                        title="Editar"
-                      >
-                        <i className="bi bi-pencil"></i>
-                      </button>
+                        <button
+                          className="btn btn-sm btn-outline-secondary me-2"
+                          title="Editar"
+                        >
+                          <i className="bi bi-pencil"></i>
+                        </button>
 
-                      <button
-                        className="btn btn-sm btn-outline-danger"
-                        title="Eliminar"
-                      >
-                        <i className="bi bi-trash"></i>
-                      </button>
+                        <button
+                          className="btn btn-sm btn-outline-danger"
+                          title="Eliminar"
+                        >
+                          <i className="bi bi-trash"></i>
+                        </button>
                       </div>
                     </td>
                   </tr>

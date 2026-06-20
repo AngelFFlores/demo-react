@@ -9,7 +9,7 @@ import Group from "../pages/Group";
 import Students from "../pages/Students";
 import Payments from "../pages/Payments";
 import Reports from "../pages/Reports";
-
+import CreateStudent from "../pages/CreateStudent";
 
 export default function AppRoutes() {
   return (
@@ -31,8 +31,10 @@ export default function AppRoutes() {
           <Route path="/students" element={<Students />} />
 
           <Route path="/payments" element={<Payments />} />
-          
+
           <Route path="/reports" element={<Reports />} />
+
+          <Route path="/alumnos/nuevo" element={<CreateStudent />} />
         </Route>
       </Routes>
     </BrowserRouter>

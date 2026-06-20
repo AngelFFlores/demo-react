@@ -1,6 +1,6 @@
 export default function Reports() {
   return (
-    <div className="container py-5">
+    <div className="container py-5 px-3">
       <div className="mb-4">
         <h1 className="fw-bold">Reportes</h1>
 

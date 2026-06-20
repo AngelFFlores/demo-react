@@ -43,7 +43,7 @@ export default function Payments() {
   };
 
   return (
-    <div className="container py-5">
+    <div className="container py-5 px-3">
       <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 gap-3">
         <div>
           <h1 className="fw-bold">Pagos</h1>

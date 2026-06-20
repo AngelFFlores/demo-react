@@ -2,7 +2,7 @@ import DashboardCard from "../components/DashboardCard";
 
 export default function Home() {
   return (
-    <div className="container py-5">
+    <div className="container py-5 px-3">
       <div className="text-center mb-5">
         <h1 className="fw-bold">Bienvenido</h1>
 
