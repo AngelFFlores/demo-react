@@ -146,7 +146,7 @@ export default function Students() {
                             className="btn btn-sm btn-outline-secondary"
                             style={{ touchAction: "manipulation" }}
                             onClick={() =>
-                              navigate(`/students/${alumno.id}/edit`)
+                              navigate(`/students/${alumno.id}`)
                             }
                           >
                             <i className="bi bi-pencil"></i>
