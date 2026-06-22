@@ -43,14 +43,13 @@ export default function Students() {
     });
 
     if (result.isConfirmed) {
-      // Aquí después llamarás a tu API
       setAlumnos((prev) => prev.filter((a) => a.id !== alumno.id));
 
       Swal.fire({
         icon: "success",
         title: "Eliminado",
         text: "El alumno fue eliminado correctamente.",
-        timer: 1800,
+        timer: 1500,
         showConfirmButton: false,
       });
     }
@@ -61,7 +60,6 @@ export default function Students() {
       <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 gap-3">
         <div>
           <h1 className="fw-bold">Alumnos</h1>
-
           <p className="text-muted mb-0">
             Consulta y administración de alumnos.
           </p>
@@ -103,7 +101,7 @@ export default function Students() {
                   <th>Nivel</th>
                   <th>Horario</th>
                   <th>Tutor</th>
-                  <th width="170">Acciones</th>
+                  <th>Acciones</th>
                 </tr>
               </thead>
 
@@ -128,34 +126,36 @@ export default function Students() {
                       </td>
 
                       <td>{alumno.nombre}</td>
-
                       <td>{alumno.nivel}</td>
-
                       <td>{alumno.grupo}</td>
-
                       <td>{alumno.tutor}</td>
 
                       <td>
-                        <div className="d-flex">
+                        <div className="d-flex gap-2 flex-wrap">
                           <button
-                            className="btn btn-sm btn-outline-primary me-2"
-                            title="Ver"
+                            type="button"
+                            className="btn btn-sm btn-outline-primary"
+                            style={{ touchAction: "manipulation" }}
                             onClick={() => navigate(`/students/${alumno.id}`)}
                           >
                             <i className="bi bi-eye"></i>
                           </button>
 
                           <button
-                            className="btn btn-sm btn-outline-secondary me-2"
-                            title="Editar"
-                             onClick={() => navigate(`/students/${alumno.id}`)}
+                            type="button"
+                            className="btn btn-sm btn-outline-secondary"
+                            style={{ touchAction: "manipulation" }}
+                            onClick={() =>
+                              navigate(`/students/${alumno.id}/edit`)
+                            }
                           >
                             <i className="bi bi-pencil"></i>
                           </button>
 
                           <button
+                            type="button"
                             className="btn btn-sm btn-outline-danger"
-                            title="Eliminar"
+                            style={{ touchAction: "manipulation" }}
                             onClick={() => handleDelete(alumno)}
                           >
                             <i className="bi bi-trash"></i>
