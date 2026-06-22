@@ -10,6 +10,8 @@ import Students from "../pages/Students";
 import Payments from "../pages/Payments";
 import Reports from "../pages/Reports";
 import CreateStudent from "../pages/CreateStudent";
+import CreateGroup from "../pages/CreateGroup";
+import StudentDetail from "../pages/StudentDetail";
 
 export default function AppRoutes() {
   return (
@@ -35,6 +37,11 @@ export default function AppRoutes() {
           <Route path="/reports" element={<Reports />} />
 
           <Route path="/alumnos/nuevo" element={<CreateStudent />} />
+
+          <Route path="/groups/new" element={<CreateGroup />} />
+
+          <Route path="/students/:id" element={<StudentDetail />} />
+          
         </Route>
       </Routes>
     </BrowserRouter>

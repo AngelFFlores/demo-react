@@ -102,6 +102,7 @@ export default function Students() {
                         <button
                           className="btn btn-sm btn-outline-primary me-2"
                           title="Ver"
+                          onClick={() => navigate(`/students/${alumno.id}`)}
                         >
                           <i className="bi bi-eye"></i>
                         </button>

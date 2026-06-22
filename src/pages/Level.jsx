@@ -1,7 +1,8 @@
 import DashboardCard from "../components/DashboardCard";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function Level() {
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const levelNames = {
@@ -40,12 +41,13 @@ export default function Level() {
         <div>
           <h1 className="fw-bold">{levelName}</h1>
 
-          <p className="text-muted mb-0">
-            Selecciona un grupo.
-          </p>
+          <p className="text-muted mb-0">Selecciona un grupo.</p>
         </div>
 
-        <button className="btn btn-primary">
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/groups/new")}
+        >
           + Nuevo Grupo
         </button>
       </div>

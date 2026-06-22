@@ -4,12 +4,7 @@ import Swal from "sweetalert2";
 export default function CreateStudent() {
   const fileInputRef = useRef(null);
 
-  const niveles = [
-    "Gotitas",
-    "Rayitos",
-    "Exploradores",
-    "Avanzado",
-  ];
+  const niveles = ["Gotitas", "Rayitos", "Exploradores", "Avanzado"];
 
   const horarios = [
     "10:00 AM - 11:00 AM",
@@ -20,10 +15,7 @@ export default function CreateStudent() {
     "3:00 PM - 4:00 PM",
   ];
 
-  const tutores = [
-    "Miss Maye",
-    "Miss Alejandra",
-  ];
+  const tutores = ["Miss Maye", "Miss Alejandra"];
 
   const [form, setForm] = useState({
     nombre: "",
@@ -64,7 +56,8 @@ export default function CreateStudent() {
       icon: "success",
       title: "Guardado con éxito",
       text: "El alumno fue registrado correctamente.",
-      confirmButtonText: "Aceptar",
+      showConfirmButton: false,
+      timer: 1800,
     });
 
     window.history.back();
@@ -195,7 +188,7 @@ export default function CreateStudent() {
             </div>
 
             {/* BOTONES */}
-            <div className="d-flex gap-2">
+            <div className="d-flex gap-2 justify-content-end">
               <button type="submit" className="btn btn-primary">
                 <i className="bi bi-check-circle me-2"></i>
                 Guardar

@@ -36,14 +36,18 @@ export default function Group() {
         <div>
           <h1 className="fw-bold">Grupo {id}</h1>
 
-          <p className="text-muted mb-0">
-            Lista de alumnos inscritos.
-          </p>
+          <p className="text-muted mb-0">Lista de alumnos inscritos.</p>
         </div>
-
-        <button className="btn btn-primary">
-          + Nuevo Alumno
+        <button
+          className="btn btn-outline-secondary mb-4"
+          onClick={() => window.history.back()}
+        >
+          <i className="bi bi-arrow-left me-2"></i>
+          Regresar
         </button>
+        {/* <button className="btn btn-primary">
+          + Nuevo Alumno
+        </button> */}
       </div>
 
       <div className="row">
@@ -62,9 +66,7 @@ export default function Group() {
                   height="120"
                 />
 
-                <h5 className="fw-bold">
-                  {alumno.nombre}
-                </h5>
+                <h5 className="fw-bold">{alumno.nombre}</h5>
 
                 <hr />
 
