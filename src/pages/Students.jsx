@@ -136,7 +136,7 @@ export default function Students() {
                       <td>{alumno.tutor}</td>
 
                       <td>
-                        <div className="d-flex">
+                        <div className="d-flex gap-2 flex-wrap">
                           <button
                             className="btn btn-sm btn-outline-primary me-2"
                             title="Ver"
@@ -148,7 +148,7 @@ export default function Students() {
                           <button
                             className="btn btn-sm btn-outline-secondary me-2"
                             title="Editar"
-                             onClick={() => navigate(`/students/${alumno.id}`)}
+                            onClick={() => navigate(`/students/${alumno.id}`)}
                           >
                             <i className="bi bi-pencil"></i>
                           </button>
