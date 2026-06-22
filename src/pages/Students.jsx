@@ -1,34 +1,64 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 export default function Students() {
   const navigate = useNavigate();
-  const alumnos = [
+
+  const [alumnos, setAlumnos] = useState([
     {
       id: 1,
       nombre: "Mateo Flores",
-      nivel: "Nivel 1",
-      grupo: "Matutino",
-      tutor: "Leslie Garrido",
+      nivel: "Gotitas",
+      grupo: "10:00 AM - 11:00 AM",
+      tutor: "Miss Maye",
     },
     {
       id: 2,
       nombre: "Sofía Martínez",
-      nivel: "Nivel 2",
-      grupo: "Vespertino",
-      tutor: "Ana Martínez",
+      nivel: "Rayitos",
+      grupo: "11:00 AM - 12:00 PM",
+      tutor: "Miss Alejandra",
     },
     {
       id: 3,
       nombre: "Santiago Pérez",
-      nivel: "Nivel 1",
-      grupo: "Intermedio",
-      tutor: "Carlos Pérez",
+      nivel: "Exploradores",
+      grupo: "2:00 PM - 3:00 PM",
+      tutor: "Miss Maye",
     },
-  ];
+  ]);
+
+  const handleDelete = async (alumno) => {
+    const result = await Swal.fire({
+      title: "¿Eliminar alumno?",
+      text: `¿Desea eliminar el registro de ${alumno.nombre}?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#dc3545",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+      reverseButtons: true,
+    });
+
+    if (result.isConfirmed) {
+      // Aquí después llamarás a tu API
+      setAlumnos((prev) => prev.filter((a) => a.id !== alumno.id));
+
+      Swal.fire({
+        icon: "success",
+        title: "Eliminado",
+        text: "El alumno fue eliminado correctamente.",
+        timer: 1800,
+        showConfirmButton: false,
+      });
+    }
+  };
 
   return (
     <div className="container py-5 px-3">
-      <div className="d-flex flex-column flex-sm-row justify-content-between  align-items-start align-items-sm-center mb-4 gap-3">
+      <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4 gap-3">
         <div>
           <h1 className="fw-bold">Alumnos</h1>
 
@@ -41,7 +71,8 @@ export default function Students() {
           className="btn btn-primary"
           onClick={() => navigate("/alumnos/nuevo")}
         >
-          + Nuevo Alumno
+          <i className="bi bi-plus-circle me-2"></i>
+          Nuevo Alumno
         </button>
       </div>
 
@@ -70,60 +101,70 @@ export default function Students() {
                   <th>Foto</th>
                   <th>Nombre</th>
                   <th>Nivel</th>
-                  <th>Grupo</th>
+                  <th>Horario</th>
                   <th>Tutor</th>
-                  <th>Acciones</th>
+                  <th width="170">Acciones</th>
                 </tr>
               </thead>
 
               <tbody>
-                {alumnos.map((alumno) => (
-                  <tr key={alumno.id}>
-                    <td>
-                      <img
-                        src={`https://i.pravatar.cc/100?img=${alumno.id}`}
-                        alt={alumno.nombre}
-                        className="rounded-circle"
-                        width="50"
-                        height="50"
-                      />
-                    </td>
-
-                    <td>{alumno.nombre}</td>
-
-                    <td>{alumno.nivel}</td>
-
-                    <td>{alumno.grupo}</td>
-
-                    <td>{alumno.tutor}</td>
-
-                    <td>
-                      <div className="d-flex">
-                        <button
-                          className="btn btn-sm btn-outline-primary me-2"
-                          title="Ver"
-                          onClick={() => navigate(`/students/${alumno.id}`)}
-                        >
-                          <i className="bi bi-eye"></i>
-                        </button>
-
-                        <button
-                          className="btn btn-sm btn-outline-secondary me-2"
-                          title="Editar"
-                        >
-                          <i className="bi bi-pencil"></i>
-                        </button>
-
-                        <button
-                          className="btn btn-sm btn-outline-danger"
-                          title="Eliminar"
-                        >
-                          <i className="bi bi-trash"></i>
-                        </button>
-                      </div>
+                {alumnos.length === 0 ? (
+                  <tr>
+                    <td colSpan="6" className="text-center py-5 text-muted">
+                      No hay alumnos registrados.
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  alumnos.map((alumno) => (
+                    <tr key={alumno.id}>
+                      <td>
+                        <img
+                          src={`https://i.pravatar.cc/100?img=${alumno.id}`}
+                          alt={alumno.nombre}
+                          className="rounded-circle"
+                          width="50"
+                          height="50"
+                        />
+                      </td>
+
+                      <td>{alumno.nombre}</td>
+
+                      <td>{alumno.nivel}</td>
+
+                      <td>{alumno.grupo}</td>
+
+                      <td>{alumno.tutor}</td>
+
+                      <td>
+                        <div className="d-flex">
+                          <button
+                            className="btn btn-sm btn-outline-primary me-2"
+                            title="Ver"
+                            onClick={() => navigate(`/students/${alumno.id}`)}
+                          >
+                            <i className="bi bi-eye"></i>
+                          </button>
+
+                          <button
+                            className="btn btn-sm btn-outline-secondary me-2"
+                            title="Editar"
+                             onClick={() => navigate(`/students/${alumno.id}`)}
+                          >
+                            <i className="bi bi-pencil"></i>
+                          </button>
+
+                          <button
+                            className="btn btn-sm btn-outline-danger"
+                            title="Eliminar"
+                            onClick={() => handleDelete(alumno)}
+                          >
+                            <i className="bi bi-trash"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
