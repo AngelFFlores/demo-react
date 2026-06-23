@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Payments() {
+  const navigate = useNavigate();
   const pagos = [
     {
       id: 1,
@@ -52,8 +55,13 @@ export default function Payments() {
             Administración de mensualidades y pagos.
           </p>
         </div>
-
-        <button className="btn btn-primary">+ Registrar Pago</button>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/payments/new")}
+        >
+          <i className="bi bi-cash me-2"></i>
+          Registrar Pago
+        </button>{" "}
       </div>
 
       <div className="card shadow-sm">
@@ -116,13 +124,14 @@ export default function Payments() {
                         <button
                           className="btn btn-sm btn-success me-2"
                           title="Registrar Pago"
+                          onClick={() => navigate("/payments/new")}
                         >
                           <i className="bi bi-cash"></i>
                         </button>
-
                         <button
                           className="btn btn-sm btn-outline-primary"
                           title="Ver Historial"
+                          onClick={() => navigate(`/payments/${pago.id}`)}
                         >
                           <i className="bi bi-eye"></i>
                         </button>

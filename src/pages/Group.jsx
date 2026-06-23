@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function Group() {
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const alumnos = [
@@ -88,7 +89,11 @@ export default function Group() {
                   </p>
                 </div>
 
-                <button className="btn btn-outline-primary w-100">
+                <button
+                  className="btn btn-outline-primary w-100"
+                  onClick={() => navigate(`/students/${alumno.id}`)}
+                >
+                  <i className="bi bi-eye me-2"></i>
                   Ver Perfil
                 </button>
               </div>

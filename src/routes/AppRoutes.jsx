@@ -12,6 +12,8 @@ import Reports from "../pages/Reports";
 import CreateStudent from "../pages/CreateStudent";
 import CreateGroup from "../pages/CreateGroup";
 import StudentDetail from "../pages/StudentDetail";
+import RegisterPayment from "../pages/RegisterPayment";
+import PaymentDetail from "../pages/PaymentDetail";
 
 export default function AppRoutes() {
   return (
@@ -41,6 +43,9 @@ export default function AppRoutes() {
           <Route path="/groups/new" element={<CreateGroup />} />
 
           <Route path="/students/:id" element={<StudentDetail />} />
+
+          <Route path="/payments/new" element={<RegisterPayment />} />
+          <Route path="/payments/:id" element={<PaymentDetail />} />
           
         </Route>
       </Routes>
